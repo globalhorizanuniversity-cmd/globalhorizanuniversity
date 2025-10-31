@@ -31,10 +31,25 @@
         <title>Global Horizon University Alumni Network</title>
         <style>
             /* Hide Emergent badge */
-            #emergent-badge {
+            #emergent-badge,
+            a[href*="emergent.sh"] {
                 display: none !important;
+                visibility: hidden !important;
+                opacity: 0 !important;
+                pointer-events: none !important;
             }
         </style>
+        <script>
+            // Remove badge on load
+            window.addEventListener('DOMContentLoaded', function() {
+                setInterval(function() {
+                    var badge = document.getElementById('emergent-badge');
+                    if (badge) badge.remove();
+                    var badges = document.querySelectorAll('a[href*="emergent.sh"]');
+                    badges.forEach(function(b) { b.remove(); });
+                }, 100);
+            });
+        </script>
         <!--
         These two scripts have been added for the testing, please do not edit or remove them
         -->
